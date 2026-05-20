@@ -171,18 +171,8 @@ int main() {
             case 4:
                 library.issueBook();
                 break;
-            case 5:
-                library.returnBook();
-                break;
-            case 6:
+            case 1001:
                 library.deleteBook();
-                break;
-            case 7:
-                library.sortBooks();
-                break;
-            case 8:
-                cout << "Exiting..." << endl;
-                return 0;
             default:
                 cout << "Invalid choice." << endl;
         }
