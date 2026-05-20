@@ -1,0 +1,27 @@
+name: CodeSentinal Test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  codesentinal:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
+
+      - name: Run CodeSentinal
+        uses: samarth96k/CodeSentinal@package-github-action-phase2
+        with:
+          mode: all
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          repo_root: "."
