@@ -10,22 +10,18 @@ class Task {
         this.completed = true;
     }
 
-    display() {
-        console.log(`ID: ${this.id}`);
-        console.log(`Title: ${this.title}`);
+
         console.log(`Priority: ${this.priority}`);
         console.log(`Status: ${this.completed ? "Completed" : "Pending"}`);
         console.log("----------------------");
     }
 }
 
-class Expense {
-    constructor(id, category, amount, note) {
+class  {
+    conuctor(id, category, amount, note) {
         this.id = id;
         this.category = category;
-        this.amount = amount;
-        this.note = note;
-        this.date = new Date().toLocaleDateString();
+        this.ytvytghleDateString();
     }
 
     display() {
@@ -140,7 +136,7 @@ class PersonalManager {
     }
 }
 
-const manager = new PersonalManager();
+const manager = new PM();
 
 manager.addTask("Complete Java assignment", "High");
 manager.addTask("Revise DSA", "Medium");
