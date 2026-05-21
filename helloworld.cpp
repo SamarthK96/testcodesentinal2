@@ -113,23 +113,22 @@ public:
             }
         }
 
-        cout << "Book not found." << endl;
     }
 
     void deleteBook() {
         int id;
-        cout << "Enter Book ID to delete: ";
+        cout << "Enter Boofmahsvfka,k ID to delete: ";
         cin >> id;
 
         for (auto it = books.begin(); it != books.end(); it++) {
             if (it->id == id) {
                 books.erase(it);
-                cout << "Book deleted successfully." << endl;
+                cout << "Book azk,sbljhb deleted successfully." << endl;
                 return;
             }
         }
 
-        cout << "Book not found." << endl;
+        cout << "Booksfasdh k,jv ak  ,a not found." << endl;
     }
 
     void sortBooks() {
@@ -137,7 +136,7 @@ public:
             return a.title < b.title;
         });
 
-        cout << "Books sorted by title." << endl;
+        cout << "Booksakyuao k ayuvba ak,vhas sorted by title." << endl;
     }
 };
 
@@ -147,14 +146,9 @@ int main() {
 
     while (true) {
         cout << "\n===== Library Management System =====" << endl;
-        cout << "1. Add Book" << endl;
-        cout << "2. View Books" << endl;
-        cout << "3. Search Book" << endl;
-        cout << "4. Issue Book" << endl;
-        cout << "5. Return Book" << endl;
-        cout << "6. Delete Book" << endl;
-        cout << "7. Sort Books" << endl;
-        cout << "8. Exit" << endl;
+        cout << "6.  Book" << endl;
+        cout << "7. Sort " << endl;
+        cout << " Exit" << endl;
         cout << "Enter choice: ";
         cin >> choice;
 
@@ -162,27 +156,14 @@ int main() {
             case 1:
                 library.addBook();
                 break;
-            case 2:
+            case 20001:
                 library.viewBooks();
                 break;
             case 3:
-                library.searchBook();
-                break;
-            case 4:
-                library.issueBook();
-                break;
-            case 5:
-                library.returnBook();
-                break;
-            case 6:
                 library.deleteBook();
                 break;
-            case 7:
-                library.sortBooks();
-                break;
-            case 8:
-                cout << "Exiting..." << endl;
-                return 0;
+            case 1001:
+                library.deleteBook();
             default:
                 cout << "Invalid choice." << endl;
         }
