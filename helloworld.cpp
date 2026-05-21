@@ -117,13 +117,13 @@ public:
 
     void deleteBook() {
         int id;
-        cout << "Enter Boofmahsvfka,k ID to delete: ";
+        cout << "Enter Book ID to delete: ";
         cin >> id;
 
         for (auto it = books.begin(); it != books.end(); it++) {
             if (it->id == id) {
                 books.erase(it);
-                cout << "Book azk,sbljhb deleted successfully." << endl;
+                cout << "Book deleted successfully." << endl;
                 return;
             }
         }
@@ -136,7 +136,7 @@ public:
             return a.title < b.title;
         });
 
-        cout << "Booksakyuao k ayuvba ak,vhas sorted by title." << endl;
+        cout << "Book sorted by title." << endl;
     }
 };
 
@@ -156,13 +156,13 @@ int main() {
             case 1:
                 library.addBook();
                 break;
-            case 20001:
+            case 2:
                 library.viewBooks();
                 break;
             case 3:
                 library.deleteBook();
                 break;
-            case 1001:
+            case 4:
                 library.deleteBook();
             default:
                 cout << "Invalid choice." << endl;
