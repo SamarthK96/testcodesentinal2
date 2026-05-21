@@ -16,7 +16,7 @@ class Student {
     }
 
     String getGrade() {
-        if (marks >= 90) return "A+";
+        if (marks >= 90) return "S";
         if (marks >= 80) return "A";
         if (marks >= 70) return "B";
         if (marks >= 60) return "C";
@@ -26,10 +26,10 @@ class Student {
 
     void display() {
         System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Course: " + course);
-        System.out.println("Marks: " + marks);
+        System.out.println("Name: " + nameOfTheStudent);
+        System.out.println("Age: " + ageOfTheStudent);
+        System.out.println("Course: " + courseOfTheStudent);
+        System.out.println("Marks: " + marksOfTheStudent);
         System.out.println("Grade: " + getGrade());
         System.out.println("-------------------------");
     }
