@@ -24,4 +24,5 @@ jobs:
         with:
           mode: all
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          github_token: ${{ github.token }}
           repo_root: "."
