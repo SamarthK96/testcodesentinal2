@@ -1,28 +1,26 @@
-name: CodeSentinal Test
+name: CodeSentinal Maintainer Manual Wiki Update
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  codesentinal:
+  wiki-update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout PR branch
+      - name: Checkout trusted maintainer branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
           persist-credentials: true
 
-      - name: Run CodeSentinal
-        uses: samarth96k/CodeSentinal@package-github-action-phase2
+      - name: Run CodeSentinal Wiki Update
+        uses: samarth96k/CodeSentinal@v1
         with:
-          mode: all
+          mode: wiki-update
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           github_token: ${{ github.token }}
           repo_root: "."
