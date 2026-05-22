@@ -170,11 +170,6 @@ public class InventoryManager {
                     sortProductsByPrice();
                     break;
 
-                case 7:
-                    showTotalInventoryValue();
-                    break;
-
-                case 8:
                     System.out.println("Exiting program...");
                     return;
 
