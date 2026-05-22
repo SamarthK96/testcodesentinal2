@@ -17,7 +17,7 @@ jobs:
           persist-credentials: true
 
       - name: Run CodeSentinal Wiki Update
-        uses: samarth96k/CodeSentinal@v1
+        uses: samarth96k/CodeSentinal@package-github-action-phase2
         with:
           mode: wiki-update
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
