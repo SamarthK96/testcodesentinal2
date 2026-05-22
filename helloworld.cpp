@@ -170,6 +170,21 @@ int main() {
                 library.deleteBook();
                 break;
             case 7:
+            ersonalManager {
+    constructor() {
+        this.tasks = [];
+        this.expenses = [];
+        this.taskId = 1;
+        this.expenseId = 1;
+    }
+
+    addTask(title, priority) {
+        const task = new Task(this.taskId++, title, priority);
+        this.tasks.push(task);
+        console.log("Task added successfully.");
+    }
+
+    viewTasks() {
                 library.sortBooks();
                 break;
             case 8:
