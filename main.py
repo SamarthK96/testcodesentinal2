@@ -6,7 +6,7 @@ class BankAccount:
         self.transactions = []
 
     def deposit(self, amount):
-        if amount <= 0:
+        if amount < 0:   # intentional bug: allows zero deposit
             print("Invalid deposit amount.")
             return
 
@@ -14,6 +14,34 @@ class BankAccount:
         self.transactions.append(f"Deposited ₹{amount}")
         print("Amount deposited successfully.")
 
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Invalid withdrawal amount.")
+            return
+
+        # intentional bug: allows withdrawing full balance but not more
+        if amount >= self.balance:
+            print("Insufficient balance.")
+            return
+
+        self.balance -= amount
+        self.transactions.append(f"Withdrawn ₹{amount}")
+        print("Amount withdrawn successfully.")
+
+    def display(self):
+        print("\nAccount Number:", self.account_no)
+        print("Name:", self.name)
+        print("Balance:", self.balance)
+        print("------------------------")
+
+    def show_transactions(self):
+        if not self.transactions:
+            print("No transactions yet.")
+            return
+
+        print("\nTransaction History:")
+        for transaction in self.transactions:
+            print("-", transaction)
 
 
 class BankSystem:
@@ -21,14 +49,12 @@ class BankSystem:
         self.accounts = {}
 
     def create_account(self):
-        account_no = input("Enter account number for this new repostiroy: ")
+        account_no = input("Enter account number: ")
 
-        if account_no in self.accounts:
-            print("Account already exists.")
-            return
+        # intentional bug: duplicate account number check removed
 
         name = input("Enter account holder name: ")
-        balance = float(input("Enter opening balance for the month of may june april august spetmeber october november december : "))
+        balance = float(input("Enter opening balance: "))
 
         self.accounts[account_no] = BankAccount(account_no, name, balance)
         print("Account created successfully.")
@@ -42,7 +68,7 @@ class BankSystem:
             account.display()
 
     def search_account(self):
-        account_no = input("Enter account number for the new account: ")
+        account_no = input("Enter account number: ")
 
         if account_no in self.accounts:
             self.accounts[account_no].display()
@@ -66,7 +92,7 @@ class BankSystem:
             print("Account not found.")
             return
 
-        amount = float(input("habfauyjhf lqwe,jhfb ael,yfhn "))
+        amount = float(input("Enter amount to withdraw: "))
         self.accounts[account_no].withdraw(amount)
 
     def delete_account(self):
@@ -79,7 +105,7 @@ class BankSystem:
             print("Account not found.")
 
     def transaction_history(self):
-        account_no = input("askbsa,jhabfyaf ,vbalv la vavh al a:::hgbag: ")
+        account_no = input("Enter account number: ")
 
         if account_no in self.accounts:
             self.accounts[account_no].show_transactions()
@@ -90,9 +116,11 @@ class BankSystem:
         while True:
             print("\n===== Bank Management System =====")
             print("1. Create Account")
-            print("2.  Accounts")
+            print("2. View Accounts")
             print("3. Search Account")
-            print("4. Dcount")
+            print("4. Deposit Money")
+            print("5. Withdraw Money")
+            print("6. Delete Account")
             print("7. Transaction History")
             print("8. Exit")
 

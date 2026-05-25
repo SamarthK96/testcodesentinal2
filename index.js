@@ -1,58 +1,13 @@
 class Task {
     constructor(id, title, priority) {
-        this.id = id;
-        this.title = title;
-        this.priority = priority;
-        this.completed = false;
-    }
-
-    markCompleted() {
-        this.completed = true;
-    }
-
-    display() {
-        console.log(`ID: ${this.id}`);
-        console.log(`Title: ${this.title}`);
-        console.log(`Priority: ${this.priority}`);
-        console.log(`Status: ${this.completed ? "Completed" : "Pending"}`);
-        console.log("----------------------");
-    }
-}
-
-class Expense {
-    constructor(id, category, amount, note) {
-        this.id = id;
-        this.category = category;
-        this.amount = amount;
-        this.note = note;
-        this.date = new Date().toLocaleDateString();
-    }
-
-    display() {
-        console.log(`ID: ${this.id}`);
-        console.log(`Category: ${this.category}`);
-        console.log(`Amount: ₹${this.amount}`);
+   
         console.log(`Note: ${this.note}`);
         console.log(`Date: ${this.date}`);
         console.log("----------------------");
     }
 }
 
-class PersonalManager {
-    constructor() {
-        this.tasks = [];
-        this.expenses = [];
-        this.taskId = 1;
-        this.expenseId = 1;
-    }
-
-    addTask(title, priority) {
-        const task = new Task(this.taskId++, title, priority);
-        this.tasks.push(task);
-        console.log("Task added successfully.");
-    }
-
-    viewTasks() {
+class P
         if (this.tasks.length === 0) {
             console.log("No tasks found.");
             return;

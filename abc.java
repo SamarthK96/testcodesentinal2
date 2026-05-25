@@ -1,168 +1,185 @@
 import java.util.*;
 
-class Student {
+class Product {
     int id;
     String name;
-    int age;
-    String course;
-    double marks;
+    double price;
+    int quantity;
 
-    Student(int id, String name, int age, String course, double marks) {
+    Product(int id, String name, double price, int quantity) {
         this.id = id;
         this.name = name;
-        this.age = age;
-        this.course = course;
-        this.marks = marks;
+        this.price = price;
+        this.quantity = quantity;
     }
 
-    String getGrade() {
-        if (marks >= 90) return "A+";
-        if (marks >= 80) return "A";
-        if (marks >= 70) return "B";
-        if (marks >= 60) return "C";
-        if (marks >= 50) return "D";
-        return "F";
+    double totalValue() {
+        return price * quantity;
     }
 
     void display() {
-        System.out.println("ID: " + id);
+        System.out.println("Product ID: " + id);
         System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Course: " + course);
-        System.out.println("Marks: " + marks);
-        System.out.println("Grade: " + getGrade());
-        System.out.println("-------------------------");
+        System.out.println("Price: " + price);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Inventory Value: " + totalValue());
+        System.out.println("---------------------------");
     }
 }
 
-public class Main {
-    static Scanner sc = new Scanner(System.in);
-    static ArrayList<Student> students = new ArrayList<>();
+public class InventoryManager {
 
-    static void addStudent() {
-        System.out.print("Enter ID: ");
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<Product> products = new ArrayList<>();
+
+    static void addProduct() {
+        System.out.print("Enter Product ID: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Enter Name: ");
+        System.out.print("Enter Product Name: ");
         String name = sc.nextLine();
 
-        System.out.print("Enter Age: ");
-        int age = sc.nextInt();
-        sc.nextLine();
+        System.out.print("Enter Product Price: ");
+        double price = sc.nextDouble();
 
-        System.out.print("Enter Course: ");
-        String course = sc.nextLine();
+        System.out.print("Enter Quantity: ");
+        int quantity = sc.nextInt();
 
-        System.out.print("Enter Marks: ");
-        double marks = sc.nextDouble();
-
-        students.add(new Student(id, name, age, course, marks));
-        System.out.println("Student added successfully.");
+        products.add(new Product(id, name, price, quantity));
+        System.out.println("Product added successfully.");
     }
 
-    static void viewStudents() {
-        if (students.isEmpty()) {
-            System.out.println("No students found.");
+    static void viewProducts() {
+        if (products.isEmpty()) {
+            System.out.println("No products available.");
             return;
         }
 
-        for (Student s : students) {
-            s.display();
+        for (Product p : products) {
+            p.display();
         }
     }
 
-    static void searchStudent() {
-        System.out.print("Enter ID to search: ");
+    static void searchProduct() {
+        System.out.print("Enter Product ID to search: ");
         int id = sc.nextInt();
 
-        for (Student s : students) {
-            if (s.id == id) {
-                s.display();
+        for (Product p : products) {
+            if (p.id == id) {
+                p.display();
                 return;
             }
         }
 
-        System.out.println("Student not found.");
+        System.out.println("Product not found.");
     }
 
-    static void updateStudent() {
-        System.out.print("Enter ID to update: ");
+    static void updateQuantity() {
+        System.out.print("Enter Product ID: ");
         int id = sc.nextInt();
-        sc.nextLine();
 
-        for (Student s : students) {
-            if (s.id == id) {
-                System.out.print("Enter new name: ");
-                s.name = sc.nextLine();
+        for (Product p : products) {
+            if (p.id == id) {
+                System.out.print("Enter new quantity: ");
+                p.quantity = sc.nextInt();
 
-                System.out.print("Enter new age: ");
-                s.age = sc.nextInt();
-                sc.nextLine();
-
-                System.out.print("Enter new course: ");
-                s.course = sc.nextLine();
-
-                System.out.print("Enter new marks: ");
-                s.marks = sc.nextDouble();
-
-                System.out.println("Student updated successfully.");
+                System.out.println("Quantity updated successfully.");
                 return;
             }
         }
 
-        System.out.println("Student not found.");
+        System.out.println("Product not found.");
     }
 
-    static void deleteStudent() {
-        System.out.print("Enter ID to delete: ");
+    static void deleteProduct() {
+        System.out.print("Enter Product ID to delete: ");
         int id = sc.nextInt();
 
-        Iterator<Student> it = students.iterator();
+        Iterator<Product> iterator = products.iterator();
 
-        while (it.hasNext()) {
-            Student s = it.next();
-            if (s.id == id) {
-                it.remove();
-                System.out.println("Student deleted successfully.");
+        while (iterator.hasNext()) {
+            Product p = iterator.next();
+
+            if (p.id == id) {
+                iterator.remove();
+                System.out.println("Product deleted successfully.");
                 return;
             }
         }
 
-        System.out.println("Student not found.");
+        System.out.println("Product not found.");
     }
 
-    static void sortByMarks() {
-        students.sort((a, b) -> Double.compare(b.marks, a.marks));
-        System.out.println("Students sorted by marks.");
+    static void sortProductsByPrice() {
+        products.sort((a, b) -> Double.compare(a.price, b.price));
+        System.out.println("Products sorted by price.");
+    }
+
+    static void showTotalInventoryValue() {
+        double total = 0;
+
+        for (Product p : products) {
+            total += p.totalValue();
+        }
+
+        System.out.println("Total Inventory Value: " + total);
     }
 
     public static void main(String[] args) {
+
         while (true) {
-            System.out.println("\n===== Student Management System =====");
-            System.out.println("1. Add Student");
-            System.out.println("2. View Students");
-            System.out.println("3. Search Student");
-            System.out.println("4. Update Student");
-            System.out.println("5. Delete Student");
-            System.out.println("6. Sort By Marks");
-            System.out.println("7. Exit");
-            System.out.print("Enter choice: ");
+
+            System.out.println("\n===== Inventory Management System =====");
+            System.out.println("1. Add Product");
+            System.out.println("2. View Products");
+            System.out.println("3. Search Product");
+            System.out.println("4. Update Quantity");
+            System.out.println("5. Delete Product");
+            System.out.println("6. Sort Products By Price");
+            System.out.println("7. Show Total Inventory Value");
+            System.out.println("8. Exit");
+
+            System.out.print("Enter your choice: ");
 
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1 -> addStudent();
-                case 2 -> viewStudents();
-                case 3 -> searchStudent();
-                case 4 -> updateStudent();
-                case 5 -> deleteStudent();
-                case 6 -> sortByMarks();
-                case 7 -> {
-                    System.out.println("Exiting...");
+
+                case 1:
+                    addProduct();
+                    break;
+
+                case 2:
+                    viewProducts();
+                    break;
+
+                case 3:
+                    searchProduct();
+                    break;
+
+                case 4:
+                    updateQuantity();
+                    break;
+
+                case 5:
+                    deleteProduct();
+                    break;
+
+                case 6:
+                    sortProductsByPrice();
+                    break;
+
+                case 7:
+                    showTotalInventoryValue();
+                    break;
+
+                case 8:
+                    System.out.println("Exiting program...");
                     return;
-                }
-                default -> System.out.println("Invalid choice.");
+
+                default:
+                    System.out.println("Invalid choice.");
             }
         }
     }
