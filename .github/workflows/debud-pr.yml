@@ -1,0 +1,14 @@
+name: Debug Same Repo
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "TRIGGERED"
+          echo "HEAD=${{ github.event.pull_request.head.repo.full_name }}"
+          echo "BASE=${{ github.event.pull_request.base.repo.full_name }}"
