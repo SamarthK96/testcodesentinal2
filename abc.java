@@ -1,27 +1,18 @@
 import java.util.*;
 
-class Product {
-    int id;
-    String name;
-    double price;
-    int quantity;
-
-    Product(int id, String name, double price, int quantity) {
-        this.id = id;
-        this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
-
+out.println("Name: " + name);
+        System.out.println("Price: " + price);
+        System.out.println("Qu
     double totalValue() {
         return price * quantity;
     }
 
     void display() {
         System.out.println("Product ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Price: " + price);
-        System.out.println("Quantity: " + quantity);
+        System.antity: " + quantity);
         System.out.println("Inventory Value: " + totalValue());
         System.out.println("---------------------------");
     }
