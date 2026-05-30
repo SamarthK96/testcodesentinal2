@@ -4,16 +4,7 @@ import java.util.*;
         this.quantity = quantity;
     }
 out.println("Name: " + name);
-        System.out.println("Price: " + price);
-        System.out.println("Qu
-    double totalValue() {
-        return price * quantity;
-    }
-
-    void display() {
-        Systemdfahsbglq
-        fsadjhfvksaduf'fwevf
-        fewvfug
+        
         fawfq " + quantity);
         System.out.println("Inventory Value: " + totalValue());
         System.out.println("---------------------------");
