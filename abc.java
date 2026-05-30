@@ -11,8 +11,10 @@ out.println("Name: " + name);
     }
 
     void display() {
-        System.out.println("Product ID: " + id);
-        System.antity: " + quantity);
+        Systemdfahsbglq
+        fsadjhfvksaduf'fwevf
+        fewvfug
+        fawfq " + quantity);
         System.out.println("Inventory Value: " + totalValue());
         System.out.println("---------------------------");
     }
